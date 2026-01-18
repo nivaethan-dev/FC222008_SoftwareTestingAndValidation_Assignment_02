@@ -38,5 +38,8 @@ namespace FC222008_SoftwareTestingAndValidation_Assignment_02.Pages.TextInput
         {
             return btnUpdate.Text;
         }
+
+        public bool IsTextBoxDisplayed() => txtButtonName.Displayed;
+        public bool IsButtonDisplayed() => btnUpdate.Displayed;
     }
 }
