@@ -21,10 +21,16 @@ namespace FC222008_SoftwareTestingAndValidation_Assignment_02.Pages.Client_Side_
         //-------------------------------------------------//
         //                    Actions                      //
         //-------------------------------------------------//
-        // Helper Method to Click Client Side Logic Trigger Button
+        // 1. Helper Method to Click Client Side Logic Trigger Button
         public void ClickClientSideLogicTriggerButton()
         {
             ClickButton(btnClientSideLogicTrigger);
+        }
+
+        // 2. Helper method to wait until the loading indicator dissapears
+        public void WaitForBanner()
+        {
+            WaitUntilInvisible(By.CssSelector("i#spinner"), 30); // wait until loading disappears (30 s max wait)
         }
 
         // -------- State Queries (Assertions use THESE) --------
