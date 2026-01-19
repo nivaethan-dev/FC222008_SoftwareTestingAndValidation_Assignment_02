@@ -35,5 +35,17 @@ namespace FC222008_SoftwareTestingAndValidation_Assignment_02.Framework
             element.Clear();
             element.SendKeys(text);
         }
+
+        // Helper method to click button
+        protected void ClickButton(IWebElement button)
+        {
+            button.Click();
+        }
+
+        // Helper method for element display status
+        protected bool IsElementDisplayed(IWebElement element)
+        {
+            return element.Displayed;
+        }
     }
 }

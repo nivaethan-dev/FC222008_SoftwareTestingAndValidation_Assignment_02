@@ -29,20 +29,20 @@ namespace FC222008_SoftwareTestingAndValidation_Assignment_02.Pages.TextInput
         // 2. Helper method to click button
         public void ClickUpdateButton() 
         {
-            btnUpdate.Click();
+            ClickButton(btnUpdate);
         }
        
         // -------- State Queries (Assertions use THESE) --------
-        // 1. Helper method to get status of text box display
+        // 1. Helper method to get status of text box display (Text box here is where button name is typed)
         public bool IsTextBoxDisplayed()
         {
-            return txtButtonName.Displayed;
+            return IsElementDisplayed(txtButtonName);
         }
 
         // 2. Helper method to get status of button display
         public bool IsButtonDisplayed()
         {
-            return btnUpdate.Displayed;
+            return IsElementDisplayed(btnUpdate);
         }
 
         // 3. Helper Method to get Button Text

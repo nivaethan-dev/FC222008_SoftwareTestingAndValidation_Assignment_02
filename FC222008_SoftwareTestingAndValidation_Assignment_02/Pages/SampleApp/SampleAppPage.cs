@@ -22,6 +22,16 @@ namespace FC222008_SoftwareTestingAndValidation_Assignment_02.Pages.SampleApp
         //-------------------------------------------------//
         //                    Actions                      //
         //-------------------------------------------------//
-        // 1. Helper method to 
+        // 1. Helper method to type username
+        public void TypeUsername(string username)
+        {
+            EnterText(txtUsername, username);
+        }
+
+        // 2. Helper Method to type password
+        public void TypePassword(string password)
+        {
+            EnterText(txtPassword, password);
+        }
     }
 }
