@@ -7,16 +7,11 @@ using System.Threading.Tasks;
 using FC222008_SoftwareTestingAndValidation_Assignment_02.Framework;
 using FC222008_SoftwareTestingAndValidation_Assignment_02.Pages.Home;
 using FC222008_SoftwareTestingAndValidation_Assignment_02.Pages.TextInput;
+using FC222008_SoftwareTestingAndValidation_Assignment_02.DataFiles.TextInputPage;
 using OpenQA.Selenium;
 
 namespace FC222008_SoftwareTestingAndValidation_Assignment_02.Tests.TextInputPageTests
 {
-    // JSON structure for TextInputData.json
-    internal class TextInputDataWrapper
-    {
-        public List<string> TextInputs { get; set; } = new List<string>();
-    }
-
     [TestFixture]
     internal class TextInputTests
     {
@@ -48,7 +43,7 @@ namespace FC222008_SoftwareTestingAndValidation_Assignment_02.Tests.TextInputPag
         // Data source for data-driven test below
         public static IEnumerable<TestCaseData> TextInputCases()
         {
-            var data = TestDataHelper.LoadTestData<TextInputDataWrapper>("TextInputData.json");
+            var data = TestDataHelper.LoadTestData<TextInputWrapper>("TextInputPage/TextInputData.json");
             foreach (var input in data.TextInputs)
             {
                 yield return new TestCaseData(input)

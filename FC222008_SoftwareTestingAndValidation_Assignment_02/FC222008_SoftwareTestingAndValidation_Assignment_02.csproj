@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="DataFiles\TextInputData.json" />
+    <Content Include="DataFiles\TextInputPage\TextInputData.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,6 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="DataFiles\SampleAppPage\" />
     <Folder Include="Pages\Client Side Delay\" />
     <Folder Include="Pages\Alerts\" />
   </ItemGroup>
