@@ -27,4 +27,9 @@
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="144.0.7559.3100" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\Client Side Delay\" />
+    <Folder Include="Pages\Alerts\" />
+  </ItemGroup>
+
 </Project>

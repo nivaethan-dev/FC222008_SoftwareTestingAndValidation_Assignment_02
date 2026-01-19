@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using FC222008_SoftwareTestingAndValidation_Assignment_02.Framework;
 using FC222008_SoftwareTestingAndValidation_Assignment_02.Pages.TextInput;
+using FC222008_SoftwareTestingAndValidation_Assignment_02.Pages.SampleApp;
 using OpenQA.Selenium;
 
 namespace FC222008_SoftwareTestingAndValidation_Assignment_02.Pages.Home
@@ -16,12 +17,20 @@ namespace FC222008_SoftwareTestingAndValidation_Assignment_02.Pages.Home
 
         // Element Locaters
         private IWebElement lnkTextInput => FindElement(By.CssSelector("a[href='/textinput']"));
+        private IWebElement lnkSampleApp => FindElement(By.CssSelector("a[href='/sampleapp']"));
 
         // Method to navigate to Text Input page
         public TextInputPage GoToTextInput()
         {
             lnkTextInput.Click();
             return new TextInputPage(_driver);
+        }
+
+        // Method to navigate to Sample App page
+        public SampleAppPage GoToSampleApp()
+        {
+            lnkSampleApp.Click();
+            return new SampleAppPage(_driver);
         }
     }
 }
