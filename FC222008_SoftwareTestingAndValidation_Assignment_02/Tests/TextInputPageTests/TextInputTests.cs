@@ -43,12 +43,10 @@ namespace FC222008_SoftwareTestingAndValidation_Assignment_02.Tests.TextInputPag
         // Data source for data-driven test below
         public static IEnumerable<TestCaseData> TextInputCases()
         {
-            var data = TestDataHelper.LoadTestData<TextInputWrapper>("TextInputPage/TextInputData.json");
-            foreach (var input in data.TextInputs)
-            {
-                yield return new TestCaseData(input)
-                    .SetDescription($"Testing input: {input}");
-            }
+            return TestCaseSourceHelper.FromJson<TextInputWrapper, string>(
+                "TextInputPage/TextInputData.json",
+                wrapper => wrapper.TextInputs
+            );
         }
 
         // Verifies that the button text is changing to the text entered by the user
