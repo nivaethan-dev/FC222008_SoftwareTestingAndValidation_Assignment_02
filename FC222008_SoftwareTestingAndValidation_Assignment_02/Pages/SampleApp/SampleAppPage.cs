@@ -17,7 +17,7 @@ namespace FC222008_SoftwareTestingAndValidation_Assignment_02.Pages.SampleApp
         private IWebElement txtUsername => FindElement(By.CssSelector("input[name='UserName']"));
         private IWebElement txtPassword => FindElement(By.CssSelector("input[name='Password']"));
         private IWebElement btnLogin => FindElement(By.CssSelector("button#login"));
-        private IWebElement msgWelcome => FindElement(By.CssSelector("label#loginstatus"));
+        private IWebElement msgLogin => FindElement(By.CssSelector("label#loginstatus"));
 
         //-------------------------------------------------//
         //                    Actions                      //
@@ -32,6 +32,49 @@ namespace FC222008_SoftwareTestingAndValidation_Assignment_02.Pages.SampleApp
         public void TypePassword(string password)
         {
             EnterText(txtPassword, password);
+        }
+
+        // 3. Helper Method to click Login
+        public void Login()
+        {
+            ClickButton(btnLogin);
+        }
+
+        // -------- State Queries (Assertions use THESE) --------
+        // 1. Method to get login status message text
+        public string GetLoginStatusMessage()
+        {
+            return GetText(msgLogin);
+        }
+
+        // 2. Method to get status of txtUsername display
+        public bool IsTxtUsernameDisplayed()
+        {
+            return IsElementDisplayed(txtUsername);
+        }
+
+        // 3. Method to get status of txtPassword display
+        public bool IsTxtPasswordDisplayed()
+        {
+            return IsElementDisplayed(txtPassword);
+        }
+
+        // 4. Method to get status of btnLogin display
+        public bool IsBtnLoginDisplayed()
+        {
+            return IsElementDisplayed(btnLogin);
+        }
+
+        // 5. Method to verify if page displayed
+        public bool IsPageDisplayed()
+        {
+            return IsTxtUsernameDisplayed() && IsTxtPasswordDisplayed() && IsBtnLoginDisplayed();
+        }
+
+        // 6. Method to get status of LoginMessage
+        public bool IsLoginMessageDisplayed()
+        {
+            return IsElementDisplayed(msgLogin);
         }
     }
 }

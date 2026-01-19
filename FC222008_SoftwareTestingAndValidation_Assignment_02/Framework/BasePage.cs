@@ -47,5 +47,11 @@ namespace FC222008_SoftwareTestingAndValidation_Assignment_02.Framework
         {
             return element.Displayed;
         }
+
+        // Helper method to Get Text
+        protected string GetText(IWebElement element)
+        {
+            return element.Text;
+        }
     }
 }
