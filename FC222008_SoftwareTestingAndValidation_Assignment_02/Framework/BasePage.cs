@@ -28,5 +28,12 @@ namespace FC222008_SoftwareTestingAndValidation_Assignment_02.Framework
             // Waits until the element is found or the timeout expires
             return new WebDriverWait(_driver, TimeSpan.FromSeconds(timeoutSeconds)).Until(d => d.FindElement(by));
         }
+
+        // Helper method to enter text
+        protected void EnterText(IWebElement element, string text)
+        {
+            element.Clear();
+            element.SendKeys(text);
+        }
     }
 }

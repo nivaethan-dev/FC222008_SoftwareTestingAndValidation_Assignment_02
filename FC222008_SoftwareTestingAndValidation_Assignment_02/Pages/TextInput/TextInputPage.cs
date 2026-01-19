@@ -23,8 +23,7 @@ namespace FC222008_SoftwareTestingAndValidation_Assignment_02.Pages.TextInput
         // 1. Helper method to set new button name
         public void SetButtonName(string name)
         {
-            txtButtonName.Clear();
-            txtButtonName.SendKeys(name);
+            EnterText(txtButtonName, name);
         }
 
         // 2. Helper method to click button
