@@ -21,5 +21,35 @@ namespace FC222008_SoftwareTestingAndValidation_Assignment_02.Pages.Client_Side_
         //-------------------------------------------------//
         //                    Actions                      //
         //-------------------------------------------------//
+        // Helper Method to Click Client Side Logic Trigger Button
+        public void ClickClientSideLogicTriggerButton()
+        {
+            ClickButton(btnClientSideLogicTrigger);
+        }
+
+        // -------- State Queries (Assertions use THESE) --------
+        // 1. Get loadingIndicator status following the click of client side logic trigger button
+        public bool IsLoadingIndicatorDisplayed()
+        {
+            return IsElementDisplayed(loadingIndicator);
+        }
+
+        // 2. Display status of Banner
+        public bool IsBannerDisplayed()
+        {
+            return IsElementDisplayed(banner);
+        }
+
+        // 3. Get Text displayed in Banner
+        public string GetBannerText()
+        {
+            return GetText(banner);
+        }
+
+        // 4. Page display status
+        public bool IsPageDisplayed()
+        {
+            return IsElementDisplayed(btnClientSideLogicTrigger);
+        }
     }
 }

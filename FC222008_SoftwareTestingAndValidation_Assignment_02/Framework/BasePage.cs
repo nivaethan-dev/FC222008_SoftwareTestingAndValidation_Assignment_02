@@ -53,5 +53,12 @@ namespace FC222008_SoftwareTestingAndValidation_Assignment_02.Framework
         {
             return element.Text;
         }
+
+        // Waits until an element located by 'by' is no longer visible
+        protected void WaitUntilInvisible(By by, int timeoutSeconds = 10)
+        {
+            new WebDriverWait(_driver, TimeSpan.FromSeconds(timeoutSeconds))
+                .Until(SeleniumExtras.WaitHelpers.ExpectedConditions.InvisibilityOfElementLocated(by));
+        }
     }
 }
