@@ -40,7 +40,9 @@ namespace FC222008_SoftwareTestingAndValidation_Assignment_02.Tests.TextInputPag
             }
         }
 
-        // Data source for data-driven test below
+        /* Loads JSON from "TextInputPage/TextInputData.json" using TextInputWrapper, extracts the TextInputs list, 
+         * converts each item to NUnit TestCaseData, and provides it as a data source for a data-driven test
+         */
         public static IEnumerable<TestCaseData> TextInputCases()
         {
             return TestCaseSourceHelper.FromJson<TextInputWrapper, string>(

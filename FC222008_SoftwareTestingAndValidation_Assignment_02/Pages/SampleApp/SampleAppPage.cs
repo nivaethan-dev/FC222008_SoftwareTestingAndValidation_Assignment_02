@@ -35,9 +35,17 @@ namespace FC222008_SoftwareTestingAndValidation_Assignment_02.Pages.SampleApp
         }
 
         // 3. Helper Method to click Login
-        public void Login()
+        public void ClickLogin()
         {
             ClickButton(btnLogin);
+        }
+
+        // 4. Helper Method for Login
+        public void Login(string username, string password)
+        {
+            TypeUsername(username);
+            TypePassword(password);
+            ClickLogin();
         }
 
         // -------- State Queries (Assertions use THESE) --------

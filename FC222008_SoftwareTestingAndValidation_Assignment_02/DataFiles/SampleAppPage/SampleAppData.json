@@ -1,0 +1,34 @@
+{
+  "Logins": [
+    {
+      "Username": "PhantomSky",
+      "Password": "pwd",
+      "ExpectedMessage": "Welcome, PhantomSky!"
+    },
+    {
+      "Username": "ShadowKnight",
+      "Password": "pwd",
+      "ExpectedMessage": "Welcome, ShadowKnight!"
+    },
+    {
+      "Username": "LightMage",
+      "Password": "pwd",
+      "ExpectedMessage": "Welcome, LightMage!"
+    },
+    {
+      "Username": "PhantomSky",
+      "Password": "wrong",
+      "ExpectedMessage": "Invalid username/password"
+    },
+    {
+      "Username": "ShadowKnight",
+      "Password": "123",
+      "ExpectedMessage": "Invalid username/password"
+    },
+    {
+      "Username": "LightMage",
+      "Password": "",
+      "ExpectedMessage": "Invalid username/password"
+    }
+  ]
+}
