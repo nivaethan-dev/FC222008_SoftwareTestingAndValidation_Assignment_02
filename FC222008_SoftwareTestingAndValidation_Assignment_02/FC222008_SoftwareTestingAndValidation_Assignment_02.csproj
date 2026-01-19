@@ -28,7 +28,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\Client Side Delay\" />
     <Folder Include="Pages\Alerts\" />
   </ItemGroup>
 

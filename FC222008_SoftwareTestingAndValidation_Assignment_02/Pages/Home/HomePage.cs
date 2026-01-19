@@ -8,6 +8,7 @@ using FC222008_SoftwareTestingAndValidation_Assignment_02.Framework;
 using FC222008_SoftwareTestingAndValidation_Assignment_02.Pages.TextInput;
 using FC222008_SoftwareTestingAndValidation_Assignment_02.Pages.SampleApp;
 using OpenQA.Selenium;
+using FC222008_SoftwareTestingAndValidation_Assignment_02.Pages.Client_Side_Delay;
 
 namespace FC222008_SoftwareTestingAndValidation_Assignment_02.Pages.Home
 {
@@ -18,6 +19,7 @@ namespace FC222008_SoftwareTestingAndValidation_Assignment_02.Pages.Home
         // Element Locaters
         private IWebElement lnkTextInput => FindElement(By.CssSelector("a[href='/textinput']"));
         private IWebElement lnkSampleApp => FindElement(By.CssSelector("a[href='/sampleapp']"));
+        private IWebElement lnkClientSideDelay => FindElement(By.CssSelector("a[href='/clientdelay']"));
 
         // Method to navigate to Text Input page
         public TextInputPage GoToTextInput()
@@ -31,6 +33,13 @@ namespace FC222008_SoftwareTestingAndValidation_Assignment_02.Pages.Home
         {
             lnkSampleApp.Click();
             return new SampleAppPage(_driver);
+        }
+
+        // Method to navigate to Client Side Delay Page
+        public ClientSideDelayPage GoToClientSideDelay()
+        {
+            lnkClientSideDelay.Click();
+            return new ClientSideDelayPage(_driver);
         }
     }
 }
