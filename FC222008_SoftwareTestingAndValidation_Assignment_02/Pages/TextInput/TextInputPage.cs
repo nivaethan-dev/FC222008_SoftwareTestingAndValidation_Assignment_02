@@ -32,14 +32,31 @@ namespace FC222008_SoftwareTestingAndValidation_Assignment_02.Pages.TextInput
         {
             btnUpdate.Click();
         }
+       
+        // -------- State Queries (Assertions use THESE) --------
+        // 1. Helper method to get status of text box display
+        public bool IsTextBoxDisplayed()
+        {
+            return txtButtonName.Displayed;
+        }
+
+        // 2. Helper method to get status of button display
+        public bool IsButtonDisplayed()
+        {
+            return btnUpdate.Displayed;
+        }
 
         // 3. Helper Method to get Button Text
-        public string GetButtonTxt()
+        public string GetButtonText()
         {
             return btnUpdate.Text;
         }
 
-        public bool IsTextBoxDisplayed() => txtButtonName.Displayed;
-        public bool IsButtonDisplayed() => btnUpdate.Displayed;
+        // 4. Helper method to get the text currently entered in the input field
+        public string GetEnteredText()
+        {
+            return txtButtonName.GetAttribute("value") ?? string.Empty;
+        }
+
     }
 }
