@@ -24,33 +24,25 @@ namespace FC222008_SoftwareTestingAndValidation_Assignment_02.Tests.TextInputPag
         private HomePage homePage;
         private TextInputPage textInputPage;
 
-        [SetUp]
-        public void SetUp()
+        // Runs ONCE before all tests in this class
+        [OneTimeSetUp]
+        public void OneTimeSetUp()
         {
             _driver = TestDriver.GetDriver();
-            // ONLY navigate to home page
             _driver.Navigate().GoToUrl("https://uitestingplayground.com/");
             homePage = new HomePage(_driver);
             textInputPage = homePage.GoToTextInput(); // Visit TextInput Page
         }
 
-        [TearDown]
-        public void TearDown()
+        // Runs ONCE after all tests in this class
+        [OneTimeTearDown]
+        public void OneTimeTearDown()
         {
-            // Properly dispose of WebDriver resources after each test
             if (_driver != null)
             {
                 _driver.Quit();
                 _driver.Dispose();
             }
-        }
-
-        // Verifies text box and button are visible on the Text Input page
-        [Test(Description = "TC001_1_Verify_TextInput_Page_UI")]
-        public void TC001_1_TextInput_Verify_Page_UI()
-        {
-            Assert.That(textInputPage.IsTextBoxDisplayed(), Is.True, "The text box is not displayed on Text Input Page.");
-            Assert.That(textInputPage.IsButtonDisplayed(), Is.True, "The update button is not displayed on Text Input Page.");
         }
 
         // Data source for data-driven test below
@@ -64,22 +56,30 @@ namespace FC222008_SoftwareTestingAndValidation_Assignment_02.Tests.TextInputPag
             }
         }
 
-        // Verifies text box accepts and retains input values from JSON test data
-        [Test, TestCaseSource(nameof(TextInputCases))]
-        public void TC001_2_VerifyTextBoxInput(string inputText)
-        {
-            textInputPage.SetButtonName(inputText);
-            Assert.That(textInputPage.GetEnteredText(), Is.EqualTo(inputText),$"Textbox did not retain the value: {inputText}");
-        }
-
         // Verifies that the button text is changing to the text entered by the user
         [Test, TestCaseSource(nameof(TextInputCases))]
-        public void TC001_3_Verify_Button_Text_Changes_To_UserEnteredText(string inputText)
+        public void TC001_1_Verify_Button_Text_Changes_To_UserEnteredText(string inputText)
         {
             textInputPage.SetButtonName(inputText);
             textInputPage.ClickUpdateButton();
 
             Assert.That(textInputPage.GetButtonText(), Is.EqualTo(inputText), $"Button text did not update correctly for input: {inputText}");
+        }
+
+        // Verifies text box and button are visible on the Text Input page
+        [Test(Description = "TC001_2_Verify_TextInput_Page_UI")]
+        public void TC001_2_TextInput_Verify_Page_UI()
+        {
+            Assert.That(textInputPage.IsTextBoxDisplayed(), Is.True, "The text box is not displayed on Text Input Page.");
+            Assert.That(textInputPage.IsButtonDisplayed(), Is.True, "The update button is not displayed on Text Input Page.");
+        }
+
+        // Verifies text box accepts and retains input values from JSON test data
+        [Test, TestCaseSource(nameof(TextInputCases))]
+        public void TC001_3_VerifyTextBoxInput(string inputText)
+        {
+            textInputPage.SetButtonName(inputText);
+            Assert.That(textInputPage.GetEnteredText(), Is.EqualTo(inputText),$"Textbox did not retain the value: {inputText}");
         }
     }
 }
