@@ -11,7 +11,7 @@ using OpenQA.Selenium;
 
 namespace FC222008_SoftwareTestingAndValidation_Assignment_02.Tests.TextInputPageTests
 {
-    // Wrapper class for JSON deserialization
+    // JSON structure for TextInputData.json
     internal class TextInputDataWrapper
     {
         public List<string> TextInputs { get; set; } = new List<string>();
@@ -23,9 +23,6 @@ namespace FC222008_SoftwareTestingAndValidation_Assignment_02.Tests.TextInputPag
         private IWebDriver _driver;
         private HomePage homePage;
         private TextInputPage textInputPage;
-
-        // Test data loaded from JSON. Must be static for TestCaseSource
-        private static List<string> textInputData;
 
         [SetUp]
         public void SetUp()
@@ -48,10 +45,7 @@ namespace FC222008_SoftwareTestingAndValidation_Assignment_02.Tests.TextInputPag
             }
         }
 
-        /* TC001_1 - Expected Result 1:
-           "The text input page is displayed.
-           A text box and a button is appearing on the page."
-        */
+        // Verifies text box and button are visible on the Text Input page
         [Test(Description = "TC001_1_Verify_TextInput_Page_UI")]
         public void TC001_1_TextInput_Verify_Page_UI()
         {
@@ -59,34 +53,33 @@ namespace FC222008_SoftwareTestingAndValidation_Assignment_02.Tests.TextInputPag
             Assert.That(textInputPage.IsButtonDisplayed(), Is.True, "The update button is not displayed on Text Input Page.");
         }
 
-        // ------------------------------------------
-        // Static method providing TestCaseSource
-        // ------------------------------------------
+        // Data source for data-driven test below
         public static IEnumerable<TestCaseData> TextInputCases()
         {
-            // Calculate project folder dynamically
-            string projectDir = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName;
-            string filePath = Path.Combine(projectDir, "DataFiles", "TextInputData.json");
-
-            if (!File.Exists(filePath))
-                throw new FileNotFoundException($"Test data JSON not found: {filePath}");
-
-            var wrapper = TestDriver.ReadJson<TextInputDataWrapper>(filePath);
-
-            foreach (var input in wrapper.TextInputs)
+            var data = TestDataHelper.LoadTestData<TextInputDataWrapper>("TextInputData.json");
+            foreach (var input in data.TextInputs)
             {
                 yield return new TestCaseData(input)
-                    .SetName($"TC001_1_VerifyTextBoxInput_{input}");
+                    .SetDescription($"Testing input: {input}");
             }
         }
 
-        // TC001_1 - Verify textbox input using data-driven JSON
+        // Verifies text box accepts and retains input values from JSON test data
         [Test, TestCaseSource(nameof(TextInputCases))]
-        public void TC001_1_VerifyTextBoxInput(string inputText)
+        public void TC001_2_VerifyTextBoxInput(string inputText)
         {
             textInputPage.SetButtonName(inputText);
-            Assert.That(textInputPage.GetEnteredText(), Is.EqualTo(inputText),
-                $"Textbox did not retain the value: {inputText}");
+            Assert.That(textInputPage.GetEnteredText(), Is.EqualTo(inputText),$"Textbox did not retain the value: {inputText}");
+        }
+
+        // Verifies that the button text is changing to the text entered by the user
+        [Test, TestCaseSource(nameof(TextInputCases))]
+        public void TC001_3_Verify_Button_Text_Changes_To_UserEnteredText(string inputText)
+        {
+            textInputPage.SetButtonName(inputText);
+            textInputPage.ClickUpdateButton();
+
+            Assert.That(textInputPage.GetButtonText(), Is.EqualTo(inputText), $"Button text did not update correctly for input: {inputText}");
         }
     }
 }

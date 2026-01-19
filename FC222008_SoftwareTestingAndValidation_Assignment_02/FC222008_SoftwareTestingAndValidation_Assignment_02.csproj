@@ -10,11 +10,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Tests\TextInputPageTests\TextInputTests.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="DataFiles\TextInputData.json" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="DataFiles\TextInputData.json" />
+    <Content Include="Tests\TextInputPageTests\TextInputTests.cs" />
   </ItemGroup>
 
   <ItemGroup>
