@@ -60,5 +60,84 @@ namespace FC222008_SoftwareTestingAndValidation_Assignment_02.Framework
             new WebDriverWait(_driver, TimeSpan.FromSeconds(timeoutSeconds))
                 .Until(SeleniumExtras.WaitHelpers.ExpectedConditions.InvisibilityOfElementLocated(by));
         }
+
+        // ---------- Alert Helpers ----------
+        protected IAlert SwitchToAlert(int timeoutSeconds = 10)
+        {
+            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(timeoutSeconds));
+
+            return wait.Until(driver =>
+            {
+                try
+                {
+                    return driver.SwitchTo().Alert();
+                }
+                catch (NoAlertPresentException)
+                {
+                    return null;
+                }
+            })
+            ?? throw new WebDriverTimeoutException("Alert did not appear within the timeout.");
+        }
+
+        // Returns true if an alert is currently present
+        protected bool IsAlertPresent()
+        {
+            try
+            {
+                _driver.SwitchTo().Alert();
+                return true;
+            }
+            catch (NoAlertPresentException)
+            {
+                return false;
+            }
+        }
+
+
+        protected string GetAlertText()
+        {
+            var alert = SwitchToAlert();
+
+            // Alert.Text is nullable in Selenium API → normalize it
+            return alert.Text ?? string.Empty;
+        }
+
+        protected void AcceptAlert()
+        {
+            var alert = SwitchToAlert();
+            alert.Accept();
+        }
+
+        protected void DismissAlert()
+        {
+            var alert = SwitchToAlert();
+            alert.Dismiss();
+        }
+
+        protected void SendTextToAlert(string text)
+        {
+            var alert = SwitchToAlert();
+            alert.SendKeys(text);
+            alert.Accept();
+        }
+
+        // Waits until any alert is gone
+        protected void WaitUntilAlertIsGone(int timeoutSeconds = 10)
+        {
+            new WebDriverWait(_driver, TimeSpan.FromSeconds(timeoutSeconds))
+                .Until(d =>
+                {
+                    try
+                    {
+                        d.SwitchTo().Alert();
+                        return false; // still present
+                    }
+                    catch (NoAlertPresentException)
+                    {
+                        return true; // gone
+                    }
+                });
+        }
     }
 }

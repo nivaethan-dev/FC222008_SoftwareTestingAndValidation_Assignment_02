@@ -9,6 +9,7 @@ using FC222008_SoftwareTestingAndValidation_Assignment_02.Pages.TextInput;
 using FC222008_SoftwareTestingAndValidation_Assignment_02.Pages.SampleApp;
 using OpenQA.Selenium;
 using FC222008_SoftwareTestingAndValidation_Assignment_02.Pages.Client_Side_Delay;
+using FC222008_SoftwareTestingAndValidation_Assignment_02.Pages.Alerts;
 
 namespace FC222008_SoftwareTestingAndValidation_Assignment_02.Pages.Home
 {
@@ -41,6 +42,13 @@ namespace FC222008_SoftwareTestingAndValidation_Assignment_02.Pages.Home
         {
             lnkClientSideDelay.Click();
             return new ClientSideDelayPage(_driver);
+        }
+
+        // Method to navigate to Client Side Delay Page
+        public AlertsPage GoToAlerts()
+        {
+            lnkAlerts.Click();
+            return new AlertsPage(_driver);
         }
     }
 }
