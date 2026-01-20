@@ -139,5 +139,22 @@ namespace FC222008_SoftwareTestingAndValidation_Assignment_02.Framework
                     }
                 });
         }
+
+        // Waits until a new alert appears after the previous one
+        protected IAlert WaitForNextAlert(int timeoutSeconds = 5)
+        {
+            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(timeoutSeconds));
+            return wait.Until(d =>
+            {
+                try
+                {
+                    return d.SwitchTo().Alert();
+                }
+                catch (NoAlertPresentException)
+                {
+                    return null;
+                }
+            }) ?? throw new WebDriverTimeoutException("Next alert did not appear within timeout.");
+        }
     }
 }

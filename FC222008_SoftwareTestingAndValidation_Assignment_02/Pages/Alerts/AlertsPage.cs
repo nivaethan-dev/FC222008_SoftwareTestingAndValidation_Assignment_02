@@ -97,5 +97,11 @@ namespace FC222008_SoftwareTestingAndValidation_Assignment_02.Pages.Alerts
         {
             WaitUntilAlertIsGone();
         }
+
+        // 11. Wait until next popup
+        public void WaitUntilNextPopup()
+        {
+            WaitForNextAlert();
+        }
     }
 }
