@@ -20,6 +20,7 @@ namespace FC222008_SoftwareTestingAndValidation_Assignment_02.Pages.Home
         private IWebElement lnkTextInput => FindElement(By.CssSelector("a[href='/textinput']"));
         private IWebElement lnkSampleApp => FindElement(By.CssSelector("a[href='/sampleapp']"));
         private IWebElement lnkClientSideDelay => FindElement(By.CssSelector("a[href='/clientdelay']"));
+        private IWebElement lnkAlerts => FindElement(By.CssSelector("a[href='/alerts']"));
 
         // Method to navigate to Text Input page
         public TextInputPage GoToTextInput()
