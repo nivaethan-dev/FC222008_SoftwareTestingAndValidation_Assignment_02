@@ -11,6 +11,7 @@ using OpenQA.Selenium;
 
 namespace FC222008_SoftwareTestingAndValidation_Assignment_02.Tests.Alerts
 {
+    [TestFixture]
     internal class AlertsPageTests
     {
         private IWebDriver _driver;

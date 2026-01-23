@@ -11,6 +11,7 @@ using OpenQA.Selenium;
 
 namespace FC222008_SoftwareTestingAndValidation_Assignment_02.Tests.ClientSideDelayPageTests
 {
+    [TestFixture]
     internal class ClientSideDelayTests
     {
         private IWebDriver _driver;

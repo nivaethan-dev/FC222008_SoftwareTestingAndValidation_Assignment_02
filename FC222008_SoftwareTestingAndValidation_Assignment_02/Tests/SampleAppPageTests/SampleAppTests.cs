@@ -12,6 +12,7 @@ using OpenQA.Selenium;
 
 namespace FC222008_SoftwareTestingAndValidation_Assignment_02.Tests.SampleAppPageTests
 {
+    [TestFixture]
     internal class SampleAppTests
     {
         private IWebDriver _driver;
