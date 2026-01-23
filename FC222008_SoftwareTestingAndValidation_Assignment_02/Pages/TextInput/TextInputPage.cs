@@ -57,5 +57,11 @@ namespace FC222008_SoftwareTestingAndValidation_Assignment_02.Pages.TextInput
             return txtButtonName.GetAttribute("value") ?? string.Empty;
         }
 
+        // 5. Method to verify if page displayed
+        public bool IsPageDisplayed()
+        {
+            return IsTextBoxDisplayed() && IsButtonDisplayed();
+        }
+
     }
 }

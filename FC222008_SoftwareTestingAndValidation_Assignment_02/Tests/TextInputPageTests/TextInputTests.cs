@@ -51,16 +51,38 @@ namespace FC222008_SoftwareTestingAndValidation_Assignment_02.Tests.TextInputPag
             );
         }
 
-        // Verifies that the button text is changing to the text entered by the user
+        // TC001_1 - Text Input - Verificaiton of the page
         [Test, TestCaseSource(nameof(TextInputCases))]
-        public void TC001_1_Verify_Button_Text_Changes_To_UserEnteredText(string inputText)
+        public void TC001_1_TextInput_Verification_of_the_Page(string inputText)
         {
+            // Verify that the Text Input page and required elements are displayed
+            Assert.That(textInputPage.IsPageDisplayed(), Is.True, "TextInput page isn't displayed or missing the required elements.");
+
+            // Enter text in the textbox
             textInputPage.SetButtonName(inputText);
+
+            // Click the update button to apply the text
             textInputPage.ClickUpdateButton();
 
+            // Verify that the button text updates to match the input
             Assert.That(textInputPage.GetButtonText(), Is.EqualTo(inputText), $"Button text did not update correctly for input: {inputText}");
         }
 
+        /*
+         * Additional Tests
+         * ----------------
+         * These tests complement the main functional test TC001_1 to ensure thorough coverage: 
+         * 
+         * TC001_2_TextInput_Verify_Page_UI
+         *     - Purpose: Verify that all essential UI elements (textbox and button) are visible on the Text Input page.
+         *     - Reason: Even if the main functionality works, missing or invisible UI elements could prevent user interaction.
+         *     
+         * TC001_3_VerifyTextBoxInput
+         *    - Purpose: Verify that the textbox correctly retains input values from the user or test data.
+         *    - Reason: Ensures the input mechanism works reliably before verifying that button updates occur (functional dependency).
+         *    
+         * Together with TC001_1, these additional tests provide both functional and UI validation of the Text Input page.
+         */
         // Verifies text box and button are visible on the Text Input page
         [Test(Description = "TC001_2_Verify_TextInput_Page_UI")]
         public void TC001_2_TextInput_Verify_Page_UI()
