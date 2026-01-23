@@ -119,7 +119,6 @@ namespace FC222008_SoftwareTestingAndValidation_Assignment_02.Framework
         {
             var alert = SwitchToAlert();
             alert.SendKeys(text);
-            alert.Accept();
         }
 
         // Waits until any alert is gone

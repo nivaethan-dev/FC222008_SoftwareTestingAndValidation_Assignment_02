@@ -81,12 +81,12 @@ namespace FC222008_SoftwareTestingAndValidation_Assignment_02.Pages.Alerts
         }
 
         // 8. Enter Text and Accept prompt
-        public void EnterTextAndAcceptPrompt(string text)
+        public void EnterTextPrompt(string text)
         {
             SendTextToAlert(text);  // from BasePage
         }
 
-        // 9. Method to get status of alert
+        // 9. Method to get status of alert (ALERT POPUP: alert, confirm, prompt)
         public bool IsAlertPopupDisplayed()
         {
             return IsAlertPresent();
